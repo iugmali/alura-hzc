@@ -1,0 +1,324 @@
+@import "styles/variables";
+.pagina{
+  @media screen and (min-width:$desktop_width) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+  }
+  .header {
+    @media screen and (min-width:$desktop_width) {
+      grid-column: 2;
+      grid-row: 1;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      column-gap: 2rem;
+      padding: 1rem 3.75rem;
+      background-color: $header_background_desktop;
+    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $header_background_mobile;
+    padding: 8px 16px;
+    box-shadow: $shadows;
+    &__menu {
+      @media screen and (min-width:$desktop_width) {
+        display: none;
+      }
+      cursor: pointer;
+      i::before {
+        content: $icone_menu;
+        font-size: 1.5rem;
+      }
+    }
+    &__logo {
+      @media screen and (min-width:$desktop_width) {
+        display: none;
+      }
+      width: 2.5rem;
+    }
+    &__perfil {
+      @media screen and (min-width:$desktop_width) {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        column-gap: .5rem;
+        align-items: center;
+        justify-self: flex-end;
+        color: $fonte_alternativa_color;
+        padding: .5rem 2rem;
+        border-right: 1px solid $fonte_alternativa_color;
+        &::before {
+          content: "";
+          display: block;
+          width: 2rem;
+          height: 2rem;
+          background-image: var(--profile-2);
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+        }
+        &::after {
+          content: $icone_seta_baixo;
+          color: #FFFFFF;
+          font-size: 1.5rem;
+        }
+      }
+      display: none;
+    }
+    &__notification {
+      i::before {
+        content: $icone_notificacao;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .menu {
+    @media screen and (min-width:$desktop_width) {
+      grid-column: 1;
+      grid-row: span 2;
+      position: static;
+    }
+    display: flex;
+    flex-direction: column;
+    background-color: $menu_lateral_color;
+    height: 100vh;
+    width: 12.75rem;
+    position: absolute;
+    left: -100vw;
+    transition: .25s;
+    &--ativo {
+      left: 0;
+      transition: .25s;
+    }
+    &__logo {
+      width: 7.375rem;
+      align-self: center;
+      padding: 1rem;
+    }
+    &__link {
+      color: $fonte_alternativa_color;
+      height: 4rem;
+      padding-left: 4rem;
+      display: flex;
+      align-items: center;
+      &::before {
+        content: inherit;
+        width: 1.5rem;
+        height: 1.5rem;
+        font-size: 1.5rem;
+        position: absolute;
+        left: 1.5rem;
+      }
+      &--inicio {
+        content: $icone_inicio;
+      }
+      &--videos {
+        content: $icone_videos;
+      }
+      &--picos {
+        content: $icone_picos;
+      }
+      &--integrantes {
+        content: $icone_integrantes;
+      }
+      &--camisas {
+        content: $icone_camisas;
+      }
+      &--pinturas {
+        content: $icone_pinturas;
+      }
+      &--ativo {
+        color: $fonte_color;
+        padding-left: 3.5rem;
+        border-left: 0.5rem solid $fonte_color;
+      }
+    }
+  }
+  .principal {
+    @media screen and (min-width:$desktop_width) {
+      grid-column: 2;
+      grid-row: 2;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      grid-template-areas:
+        "titulo-pagina titulo-pagina titulo-pagina"
+        "videos-destaque videos-destaque videos-recentes"
+        "section-videos section-videos section-videos"
+        "artes-recentes artes-destaque artes-destaque"
+        "section-camisas section-camisas section-camisas"
+      ;
+      column-gap: 1rem;
+      padding: 1rem 3.75rem;
+      .titulo-pagina {
+        grid-area: titulo-pagina;
+      }
+      .videos-destaque {
+        grid-area: videos-destaque;
+      }
+      .videos-recentes {
+        grid-area: videos-recentes;
+      }
+      .section-videos {
+        grid-area: section-videos;
+      }
+      .artes-recentes {
+        grid-area: artes-recentes;
+      }
+      .artes-destaque {
+        grid-area: artes-destaque;
+      }
+      .section-camisas {
+        grid-area: section-camisas;
+      }
+    }
+    .section {
+      @media screen and (min-width: $desktop_width) {
+        grid-template-columns: repeat(4,1fr);
+      }
+      display: grid;
+      gap: 1rem;
+      &__titulo {
+        @media screen and (min-width: $desktop_width) {
+          grid-column: span 4;
+        }
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+    }
+    padding: 1.5rem 1rem;
+    display: grid;
+    gap: 1rem;
+    .titulo-pagina {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .cartao {
+      width: 100%;
+      border-radius: 0.938rem;
+      overflow: hidden;
+      background-color: $card_color;
+      &--destaque {
+        @media screen and (min-width: $desktop_width) {
+          margin-bottom: 0;
+        }
+        margin-bottom: 1rem;
+      }
+      &--recentes {
+        @media screen and (min-width:$desktop_width) {
+          display: grid;
+          grid-template-columns: auto auto;
+          align-items: center;
+          width: $desktop_card_max_width;
+          padding: 1rem;
+          box-sizing: border-box;
+          row-gap: 1.5rem;
+          align-self: flex-start;
+          .cartao__conteudo__titulo {
+            grid-column: auto;
+          }
+        }
+        display: none;
+      }
+      &__imagem {
+        &--desktop {
+          display: none;
+        }
+        @media screen and (min-width: $desktop_width){
+          &--desktop {
+            display: block;
+          }
+          &--mobile {
+            display: none;
+          }
+        }
+      }
+      &__link {
+        justify-self: flex-end;
+        font-size: .8rem;
+        font-weight: 600;
+        color: $links_color;
+      }
+      &__lista {
+        display: grid;
+        grid-column: span 2;
+        row-gap: 1rem;
+        &__item {
+          display: grid;
+          grid-template-columns: auto 1fr;
+          gap: 0.5rem;
+          &__thumbnail {
+            width: 2rem;
+            grid-row: span 2;
+          }
+          &__titulo {
+            font-size: 0.9rem;
+            font-weight: 700;
+            line-height: 1.2rem;
+          }
+          &__perfil {
+            font-size: 0.8rem;
+            color: $fonte_alternativa_color;
+          }
+        }
+      }
+      &__conteudo {
+        padding: 1rem;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: .5rem;
+        &__destaque {
+          grid-column: span 2;
+        }
+        &__titulo {
+          font-size: 1.2rem;
+          font-weight: 700;
+          grid-column: span 2;
+        }
+        &__perfil {
+          color: $fonte_alternativa_color;
+          font-size: .9rem;
+          grid-column: span 2;
+        }
+        &__info {
+          display: flex;
+          align-items: center;
+          color: $fonte_alternativa_color;
+          &--tempo::before {
+            content: $icone_relogio;
+            margin-right: .5rem;
+          }
+          &--visualizacao::before {
+            content: $icone_visualizacao;
+            margin-right: .5rem;
+          }
+        }
+        &__botao {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: $botao_color;
+          width: 2.5rem;
+          height: 2.5rem;
+          border-radius: .625rem;
+          font-size: .9rem;
+          justify-self: flex-end;
+          &--play::before {
+            content: $icone_play;
+            font-size: 1.5rem;
+          }
+          &--destaque {
+            @media screen and (min-width: $desktop_width) {
+              grid-column: auto;
+              padding: 1rem .5rem;
+            }
+            width: 100%;
+            grid-column: span 2;
+            &::before {
+              margin-right: .5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
